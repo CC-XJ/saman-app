@@ -1,0 +1,44 @@
+{
+  "name": "saman-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cordova:prepare": "npx cordova prepare",
+    "cordova:build": "npx cordova build",
+    "cordova:run:browser": "npx cordova run browser --no-telemetry",
+    "cordova:add-platform-browser": "npx cordova platform add browser",
+    "cordova:add-platform-android": "npx cordova platform add android"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CC-XJ/saman-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CC-XJ/saman-app/issues"
+  },
+  "homepage": "https://github.com/CC-XJ/saman-app#readme",
+  "devDependencies": {
+    "cordova": "^13.0.0",
+    "cordova-browser": "^7.0.0",
+    "cordova-plugin-device": "^3.0.0",
+    "cordova-plugin-splashscreen": "^6.0.2",
+    "cordova-plugin-statusbar": "^4.0.0",
+    "cordova-plugin-whitelist": "^1.3.5"
+  },
+  "cordova": {
+    "platforms": [
+      "browser"
+    ],
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-statusbar": {}
+    }
+  }
+}
