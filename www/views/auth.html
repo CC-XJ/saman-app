@@ -1,0 +1,26 @@
+<div class="auth-container fade-in">
+    <div class="logo-area">
+        <div class="app-logo">S</div>
+        <h1>MySaman</h1>
+        <p>Traffic Violation Review & Payment</p>
+    </div>
+
+    <form id="login-form">
+        <div class="input-group">
+            <label class="input-label">Identity Number (IC)</label>
+            <input type="text" id="ic-number" class="input-field" placeholder="Example: 900101-14-1234" required>
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">Password</label>
+            <input type="password" id="password" class="input-field" placeholder="Enter your password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="login-btn">Login</button>
+        <p style="text-align: center; margin-top: 16px; font-size: 13px;">
+            Don't have an account? <button type="button" onclick="window.app.router.navigate('signup')"
+                style="background:none; border:none; color: var(--primary); font-weight: 600; font-size: 13px; cursor: pointer; padding: 0;">Sign
+                Up</button>
+        </p>
+    </form>
+</div>

@@ -1,0 +1,42 @@
+<header class="header">
+    <div class="header-title">Dashboard</div>
+    <div style="width: 24px;"></div> <!-- Spacer -->
+</header>
+
+<div class="scroll-content">
+    <div class="card"
+        style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white;">
+        <h2 style="margin-bottom: 8px;">Hello, <span id="dashboard-user-name">User</span></h2>
+        <p style="color: rgba(255,255,255,0.8);">ID: <span id="dashboard-user-ic">...</span></p>
+        <div style="margin-top: 20px; font-size: 32px; font-weight: 700;">
+            <span id="dashboard-outstanding-count">0</span> <span
+                style="font-size: 14px; font-weight: 400; opacity: 0.8;">Outstanding Summons</span>
+        </div>
+    </div>
+
+    <h3 style="margin-bottom: 12px; margin-top: 10px;">Quick Actions</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <button class="card btn" onclick="window.app.router.navigate('tickets')"
+            style="flex-direction: column; align-items: flex-start; padding: 20px; height: auto;">
+            <div
+                style="background: rgba(0,78,204,0.1); padding: 10px; border-radius: 50%; margin-bottom: 10px; color: var(--primary);">
+                <!-- Simple Icon Placeholder -->
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                    </path>
+                </svg>
+            </div>
+            <span style="font-weight: 600; color: var(--text-main);">My Summons</span>
+        </button>
+        <button class="card btn" style="flex-direction: column; align-items: flex-start; padding: 20px; height: auto;">
+            <div
+                style="background: rgba(16,185,129,0.1); padding: 10px; border-radius: 50%; margin-bottom: 10px; color: var(--success);">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <span style="font-weight: 600; color: var(--text-main);">History</span>
+        </button>
+    </div>
+</div>

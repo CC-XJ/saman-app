@@ -1,0 +1,28 @@
+<header class="header">
+    <div class="header-title">My Profile</div>
+    <div style="width: 24px;"></div>
+</header>
+
+<div class="scroll-content">
+    <div class="card" style="text-align: center; padding: 30px 20px;">
+        <div
+            style="width: 80px; height: 80px; background: var(--secondary); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px; color: white; font-size: 32px; font-weight: bold;">
+            <span id="profile-initial">U</span>
+        </div>
+        <h2 id="profile-name">Loading...</h2>
+        <p id="profile-ic" style="margin-top: 4px;">...</p>
+    </div>
+
+    <div class="card">
+        <h3 style="margin-bottom: 12px;">Settings</h3>
+        <!-- Just UI placeholders for now -->
+        <div style="padding: 12px 0; border-bottom: 1px solid var(--border);">Notifications</div>
+        <div style="padding: 12px 0; border-bottom: 1px solid var(--border);">Change Password</div>
+        <div style="padding: 12px 0;">Help & Support</div>
+    </div>
+
+    <div style="padding: 20px;">
+        <button class="btn" style="background: #fee2e2; color: #ef4444; width: 100%; border: none;"
+            onclick="window.AuthController.logout()">Logout</button>
+    </div>
+</div>

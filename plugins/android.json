@@ -12,6 +12,9 @@
     },
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "com.saman.app"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.saman.app"
     }
   },
   "dependent_plugins": {}

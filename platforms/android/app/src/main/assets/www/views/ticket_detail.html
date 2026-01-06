@@ -1,0 +1,50 @@
+<header class="header">
+    <button class="btn btn-secondary" style="width: auto; padding: 8px 12px; font-size: 14px;"
+        onclick="window.app.router.back()">
+        Back
+    </button>
+    <div class="header-title">Summons Details</div>
+    <div style="width: 50px;"></div>
+</header>
+
+<div class="scroll-content">
+    <div class="card">
+        <h3 style="color: var(--text-muted); font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Summons
+            Detail</h3>
+        <div style="margin-top: 16px;">
+            <h2 id="detail-summon-type">-</h2>
+            <p id="detail-summon-location" style="margin-top: 4px;">-</p>
+            <p id="detail-summon-date" style="margin-top: 4px; font-size: 12px;">-</p>
+        </div>
+        <div
+            style="margin-top: 24px; padding-top: 24px; border-top: 1px dashed var(--border); display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 600;">Amount</span>
+            <span style="font-size: 24px; font-weight: 700; color: var(--primary);" id="detail-summon-amount">RM
+                0.00</span>
+        </div>
+        <div style="margin-top: 12px; padding: 12px; background: var(--background); border-radius: 8px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span style="font-size: 13px; color: var(--text-muted);">Status</span>
+                <span id="detail-summon-status" style="font-weight: 600; color: var(--success);">PAID</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" id="receipt-card" style="display: none;">
+        <h3 style="margin-bottom: 16px;">Payment Receipt</h3>
+        <div
+            style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border);">
+            <span style="color: var(--text-muted);">Payment Method</span>
+            <span id="receipt-method" style="font-weight: 600;">-</span>
+        </div>
+        <div
+            style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border);">
+            <span style="color: var(--text-muted);">Payment Date</span>
+            <span id="receipt-date" style="font-weight: 600;">-</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+            <span style="color: var(--text-muted);">Amount Paid</span>
+            <span id="receipt-amount" style="font-weight: 600; color: var(--success);">RM 0.00</span>
+        </div>
+    </div>
+</div>

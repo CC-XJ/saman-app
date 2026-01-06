@@ -1,0 +1,54 @@
+<header class="header">
+    <button class="btn btn-secondary" style="width: auto; padding: 8px 12px; font-size: 14px;"
+        onclick="window.app.router.back()">
+        Back
+    </button>
+    <div class="header-title">Payment Details</div>
+    <div style="width: 50px;"></div>
+</header>
+
+<div class="scroll-content">
+    <div class="card">
+        <h3 style="color: var(--text-muted); font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Summons
+            Detail</h3>
+        <div style="margin-top: 16px;">
+            <h2 id="pay-summon-type">Speeding Offense</h2>
+            <p id="pay-summon-location" style="margin-top: 4px;">Kuala Lumpur - Jalan Tun Razak</p>
+            <p id="pay-summon-date" style="margin-top: 4px; font-size: 12px;">12 Oct 2025, 14:30 PM</p>
+        </div>
+        <div
+            style="margin-top: 24px; padding-top: 24px; border-top: 1px dashed var(--border); display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-weight: 600;">Total Amount</span>
+            <span style="font-size: 24px; font-weight: 700; color: var(--primary);" id="pay-summon-amount">RM
+                300.00</span>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3 style="margin-bottom: 16px;">Payment Method</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <label
+                style="display: flex; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+                <input type="radio" name="payment-method" value="FPX" checked
+                    style="margin-right: 12px; width: 18px; height: 18px;">
+                <span style="font-weight: 500;">FPX (Online Banking)</span>
+            </label>
+            <label
+                style="display: flex; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+                <input type="radio" name="payment-method" value="Card"
+                    style="margin-right: 12px; width: 18px; height: 18px;">
+                <span style="font-weight: 500;">Credit/Debit Card</span>
+            </label>
+            <label
+                style="display: flex; align-items: center; padding: 12px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer;">
+                <input type="radio" name="payment-method" value="E-Wallet"
+                    style="margin-right: 12px; width: 18px; height: 18px;">
+                <span style="font-weight: 500;">E-Wallet (Touch 'n Go, GrabPay)</span>
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="bottom-action-bar">
+    <button class="btn btn-primary" onclick="window.app.handlers.processPayment()">Confirm Payment</button>
+</div>

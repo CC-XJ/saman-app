@@ -1,29 +1,37 @@
-/**
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+/*
+ * Main App Entry Point
+ * Orchestrates the initialization of modules
+ */
 
-        http://www.apache.org/licenses/LICENSE-2.0
+const app = {
+    initialize: function() {
+        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+    },
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
-*/
+    onDeviceReady: function() {
+        console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
+        
+        // Initialize Status Bar
+        if (window.StatusBar) {
+            StatusBar.styleDefault();
+            StatusBar.backgroundColorByHexString('#f8fafc');
+            StatusBar.overlaysWebView(false);
+        }
 
-// Wait for the deviceready event before using any of Cordova's device APIs.
-// See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
-document.addEventListener('deviceready', onDeviceReady, false);
+        // Initialize Controllers
+        AuthController.init();
 
-function onDeviceReady() {
-    // Cordova is now initialized. Have fun!
+        // Global Access for HTML event handlers (e.g., onclick="app.router...")
+        // We remap the old inline calls to our new modules for compatibility with existing HTML
+        window.app = {
+            router: Router,
+            handlers: {
+                processPayment: PaymentController.processPayment
+            }
+        };
 
-    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    document.getElementById('deviceready').classList.add('ready');
-}
+        console.log('App Initialized');
+    }
+};
+
+app.initialize();

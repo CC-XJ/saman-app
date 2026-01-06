@@ -1,50 +1,62 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
-            https://cordova.apache.org/docs/en/latest/
-        Some notes:
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta name="color-scheme" content="light dark">
-        <link rel="stylesheet" href="css/index.css">
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script src="cordova.js"></script>
-        <script src="js/index.js"></script>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <!-- Allow inline styles and data images for this UI -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover, user-scalable=no">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Saman App</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Views will be injected here by Router.js -->
+    </div>
+    <nav class="navbar" id="navbar">
+        <button class="nav-item" id="nav-dashboard" onclick="window.app.router.navigate('dashboard')">
+            <svg viewBox="0 0 24 24" stroke-width="2">
+                <path
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                </path>
+            </svg>
+            <span>Home</span>
+        </button>
+        <button class="nav-item" id="nav-tickets" onclick="window.app.router.navigate('tickets')">
+            <svg viewBox="0 0 24 24" stroke-width="2">
+                <path
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                </path>
+            </svg>
+            <span>Summons</span>
+        </button>
+        <button class="nav-item" id="nav-profile" onclick="window.app.router.navigate('profile')">
+            <svg viewBox="0 0 24 24" stroke-width="2">
+                <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+            <span>Profile</span>
+        </button>
+    </nav>
+    <script src="cordova.js"></script>
+    <!-- Modules -->
+    <script src="js/services/Store.js"></script>
+    <script src="js/services/Database.js"></script>
+    <script src="js/services/ViewLoader.js"></script>
+    <script src="js/services/Router.js"></script>
+    <script src="js/controllers/AuthController.js"></script>
+    <script src="js/controllers/DashboardController.js"></script>
+    <script src="js/controllers/TicketController.js"></script>
+    <script src="js/controllers/TicketDetailController.js"></script>
+    <script src="js/controllers/PaymentController.js"></script>
+    <script src="js/controllers/ProfileController.js"></script>
+    <script src="js/controllers/OfficerController.js"></script>
+    <!-- Main Entry -->
+    <script src="js/index.js"></script>
+</body>
+
 </html>

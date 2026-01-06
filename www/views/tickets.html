@@ -1,0 +1,24 @@
+<header class="header">
+    <button class="btn btn-secondary" style="width: auto; padding: 8px 12px; font-size: 14px;"
+        onclick="window.app.router.back()">
+        Back
+    </button>
+    <div class="header-title">My Summons</div>
+    <div style="width: 50px;"></div> <!-- Spacer -->
+</header>
+
+<div class="scroll-content">
+    <h3 style="margin-bottom: 12px; color: var(--error);">Pending Payment</h3>
+    <div class="card" style="padding: 0;">
+        <div id="pending-ticket-list">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <h3 style="margin-bottom: 12px; margin-top: 20px; color: var(--success);">Paid Summons</h3>
+    <div class="card" style="padding: 0;">
+        <div id="paid-ticket-list">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+</div>

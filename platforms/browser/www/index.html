@@ -1,50 +1,176 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
-            https://cordova.apache.org/docs/en/latest/
-        Some notes:
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <meta name="color-scheme" content="light dark">
-        <link rel="stylesheet" href="css/index.css">
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+
+<head>
+    <meta charset="utf-8">
+    <!-- Allow inline styles and data images for this UI -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover, user-scalable=no">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Saman App</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- Auth View -->
+        <section id="auth-view" class="view root-view active">
+            <div class="auth-container fade-in">
+                <div class="logo-area">
+                    <div class="app-logo">S</div>
+                    <h1>MySaman</h1>
+                    <p>Traffic Violation Review & Payment</p>
+                </div>
+
+                <form id="login-form">
+                    <div class="input-group">
+                        <label class="input-label">Identity Number (IC)</label>
+                        <input type="number" id="ic-number" class="input-field" placeholder="Example: 900101-14-1234"
+                            required>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Password</label>
+                        <input type="password" id="password" class="input-field" placeholder="Enter your password"
+                            required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="login-btn">Login</button>
+                    <p style="text-align: center; margin-top: 16px; font-size: 13px;">
+                        Don't have an account? <a href="#"
+                            style="color: var(--primary); text-decoration: none; font-weight: 600;">Sign Up</a>
+                    </p>
+                </form>
             </div>
-        </div>
-        <script src="cordova.js"></script>
-        <script src="js/index.js"></script>
-    </body>
+        </section>
+
+        <!-- Dashboard View -->
+        <section id="dashboard-view" class="view">
+            <header class="header">
+                <div class="header-title">Dashboard</div>
+                <div style="width: 24px;"></div> <!-- Spacer -->
+            </header>
+
+            <div class="scroll-content">
+                <div class="card"
+                    style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white;">
+                    <h2 style="margin-bottom: 8px;">Hello, User</h2>
+                    <p style="color: rgba(255,255,255,0.8);">ID: 900101-14-XXXX</p>
+                    <div style="margin-top: 20px; font-size: 32px; font-weight: 700;">
+                        2 <span style="font-size: 14px; font-weight: 400; opacity: 0.8;">Outstanding Summons</span>
+                    </div>
+                </div>
+
+                <h3 style="margin-bottom: 12px; margin-top: 10px;">Quick Actions</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <button class="card btn" onclick="app.router.navigate('tickets')"
+                        style="flex-direction: column; align-items: flex-start; padding: 20px; height: auto;">
+                        <div
+                            style="background: rgba(0,78,204,0.1); padding: 10px; border-radius: 50%; margin-bottom: 10px; color: var(--primary);">
+                            <!-- Simple Icon Placeholder -->
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                                </path>
+                            </svg>
+                        </div>
+                        <span style="font-weight: 600; color: var(--text-main);">My Summons</span>
+                    </button>
+                    <button class="card btn"
+                        style="flex-direction: column; align-items: flex-start; padding: 20px; height: auto;">
+                        <div
+                            style="background: rgba(16,185,129,0.1); padding: 10px; border-radius: 50%; margin-bottom: 10px; color: var(--success);">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"
+                                viewBox="0 0 24 24">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <span style="font-weight: 600; color: var(--text-main);">History</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tickets List View -->
+        <section id="tickets-view" class="view">
+            <header class="header">
+                <button class="btn btn-secondary" style="width: auto; padding: 8px 12px; font-size: 14px;"
+                    onclick="app.router.back()">
+                    Back
+                </button>
+                <div class="header-title">My Summons</div>
+                <div style="width: 50px;"></div> <!-- Spacer -->
+            </header>
+
+            <div class="scroll-content">
+                <div class="card" style="padding: 0;">
+                    <div id="ticket-list-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment View -->
+        <section id="payment-view" class="view">
+            <header class="header">
+                <button class="btn btn-secondary" style="width: auto; padding: 8px 12px; font-size: 14px;"
+                    onclick="app.router.back()">
+                    Back
+                </button>
+                <div class="header-title">Payment Details</div>
+                <div style="width: 50px;"></div>
+            </header>
+
+            <div class="scroll-content">
+                <div class="card">
+                    <h3
+                        style="color: var(--text-muted); font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">
+                        Summons Detail</h3>
+                    <div style="margin-top: 16px;">
+                        <h2 id="pay-summon-type">Speeding Offense</h2>
+                        <p id="pay-summon-location" style="margin-top: 4px;">Kuala Lumpur - Jalan Tun Razak</p>
+                        <p id="pay-summon-date" style="margin-top: 4px; font-size: 12px;">12 Oct 2025, 14:30 PM</p>
+                    </div>
+                    <div
+                        style="margin-top: 24px; padding-top: 24px; border-top: 1px dashed var(--border); display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-weight: 600;">Total Amount</span>
+                        <span style="font-size: 24px; font-weight: 700; color: var(--primary);"
+                            id="pay-summon-amount">RM 300.00</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 style="margin-bottom: 16px;">Payment Method</h3>
+                    <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px;">
+                        <button class="btn btn-secondary"
+                            style="flex: 1; min-width: 100px; border-color: var(--primary); color: var(--primary);">FPX</button>
+                        <button class="btn btn-secondary" style="flex: 1; min-width: 100px;">Card</button>
+                        <button class="btn btn-secondary" style="flex: 1; min-width: 100px;">E-Wallet</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-action-bar">
+                <button class="btn btn-primary" onclick="app.handlers.processPayment()">Confirm Payment</button>
+            </div>
+        </section>
+
+    </div>
+    <script src="cordova.js"></script>
+    <!-- Modules -->
+    <script src="js/services/Store.js"></script>
+    <script src="js/services/Router.js"></script>
+    <script src="js/controllers/AuthController.js"></script>
+    <script src="js/controllers/TicketController.js"></script>
+    <script src="js/controllers/PaymentController.js"></script>
+    <!-- Main Entry -->
+    <script src="js/index.js"></script>
+</body>
+
 </html>
