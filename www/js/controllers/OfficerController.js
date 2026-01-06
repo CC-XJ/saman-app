@@ -19,6 +19,74 @@ window.OfficerController = {
                 this.submitTicket();
             });
         }
+
+        // Setup autocomplete for IC input
+        const icInput = document.getElementById('offender-ic');
+        const autocompleteDiv = document.getElementById('ic-autocomplete');
+        
+        if (icInput && autocompleteDiv) {
+            let searchTimeout;
+            
+            icInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.trim();
+                
+                // Clear previous timeout
+                clearTimeout(searchTimeout);
+                
+                if (searchTerm.length < 2) {
+                    autocompleteDiv.style.display = 'none';
+                    return;
+                }
+                
+                // Debounce search
+                searchTimeout = setTimeout(async () => {
+                    const results = await window.Database.searchUsers(searchTerm);
+                    this.showAutocomplete(results, autocompleteDiv, icInput);
+                }, 300);
+            });
+            
+            // Hide autocomplete when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!icInput.contains(e.target) && !autocompleteDiv.contains(e.target)) {
+                    autocompleteDiv.style.display = 'none';
+                }
+            });
+        }
+    },
+
+    showAutocomplete: function(results, container, input) {
+        if (results.length === 0) {
+            container.style.display = 'none';
+            return;
+        }
+
+        container.innerHTML = '';
+        
+        results.forEach(user => {
+            const item = document.createElement('div');
+            item.style.cssText = 'padding: 12px; cursor: pointer; border-bottom: 1px solid var(--border);';
+            item.innerHTML = `
+                <div style="font-weight: 600;">${user.ic}</div>
+                <div style="font-size: 13px; color: var(--text-muted);">${user.name}</div>
+            `;
+            
+            item.addEventListener('mouseenter', () => {
+                item.style.backgroundColor = 'var(--background)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.backgroundColor = '';
+            });
+            
+            item.addEventListener('click', () => {
+                input.value = user.ic;
+                container.style.display = 'none';
+            });
+            
+            container.appendChild(item);
+        });
+        
+        container.style.display = 'block';
     },
 
     submitTicket: async function() {

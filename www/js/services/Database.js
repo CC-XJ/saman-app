@@ -134,6 +134,27 @@ window.Database = {
         });
     },
 
+    searchUsers: function(searchTerm) {
+        return new Promise((resolve) => {
+            if (!this.db) return resolve([]);
+
+            // Search for public users only (not officers) whose IC contains the search term
+            const query = "SELECT ic, name FROM users WHERE role = 'public' AND ic LIKE ? LIMIT 10";
+            const params = ['%' + searchTerm + '%'];
+
+            this.db.executeSql(query, params, (rs) => {
+                let items = [];
+                for (let i = 0; i < rs.rows.length; i++) {
+                    items.push(rs.rows.item(i));
+                }
+                resolve(items);
+            }, (err) => {
+                console.error(err);
+                resolve([]);
+            });
+        });
+    },
+
     // --- Ticket & Payment Methods ---
 
     addTicket: function(ticket) {

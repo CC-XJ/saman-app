@@ -14,9 +14,13 @@
     <div class="card">
         <h3 style="margin-bottom: 20px;">Issue Summons</h3>
         <form id="issue-ticket-form">
-            <div class="input-group">
+            <div class="input-group" style="position: relative;">
                 <label class="input-label">Offender IC Number</label>
-                <input type="number" id="offender-ic" class="input-field" placeholder="Target User IC" required>
+                <input type="text" id="offender-ic" class="input-field" placeholder="Type IC to search..." required
+                    autocomplete="off">
+                <div id="ic-autocomplete"
+                    style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; max-height: 200px; overflow-y: auto; z-index: 100; box-shadow: var(--shadow);">
+                </div>
             </div>
 
             <div class="input-group">

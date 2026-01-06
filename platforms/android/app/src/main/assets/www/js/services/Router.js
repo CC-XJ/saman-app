@@ -43,8 +43,8 @@ window.Router = {
         // Toggle Navbar & Update Active State
         const navbar = document.getElementById('navbar');
         if (navbar) {
-            // Navbar is visible for public user views (including payment and detail flows)
-            if (['dashboard', 'tickets', 'profile', 'payment', 'ticket_detail'].includes(viewId)) {
+            // Navbar is visible for public user views (excluding payment flow)
+            if (['dashboard', 'tickets', 'profile', 'ticket_detail'].includes(viewId)) {
                 navbar.style.display = 'flex';
                 
                 // Remove active from all
